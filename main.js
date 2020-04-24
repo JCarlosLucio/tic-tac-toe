@@ -2,9 +2,9 @@ const gameBoard = (() => {
 	const board = [];
 })();
 
-const playerFactoy = (name, mark) => {
-	const ready = () => {
+const Player = (name = 'player1', mark = 'X') => {
+	const chosenMsg = () => {
 		console.log(`${name} has chosen ${mark}`);
 	};
-	return ready;
+	return { name, mark, chosenMsg };
 };
