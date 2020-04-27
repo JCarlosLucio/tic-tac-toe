@@ -40,6 +40,23 @@ header h1 {
 	align-items: center;
 }
 
+#player-submit {
+	width: 9em;
+	height: 3.5em;
+	font-family: 'Press Start 2P', cursive;
+	background-size: 300% 100%;
+	background-image: linear-gradient(to right, #6400d1 0%, #5ffbf1 50%, #6400d1 100%);
+	transition: 0.5s;
+	padding: 0 0.1em 0 0.6em;
+	border: none;
+	border-radius: 0.5em;
+	color: #fff;
+}
+
+#player-submit:hover {
+	background-position: right center;
+}
+
 #player-form {
 	height: 10em;
 	font-family: 'Press Start 2P', cursive;
