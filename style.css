@@ -143,8 +143,8 @@ header h1 {
 		height: 25vh;
 	}
 	.board-place {
-		width: 6rem;
-		height: 6rem;
+		width: 5.5rem;
+		height: 5.5rem;
 		font-size: 4rem;
 	}
 	.score {
@@ -164,7 +164,7 @@ header h1 {
 		-webkit-order: 2;
 	}
 	#gameboard {
-		width: 22rem;
-		height: 22rem;
+		width: 20rem;
+		height: 20rem;
 	}
 }
