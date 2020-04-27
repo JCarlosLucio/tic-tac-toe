@@ -16,6 +16,22 @@
         <h1>TIC-TAC-TOE</h1>
     </header>
     <main>
+        <section id="player-section">
+            <div id="player-card">
+                <form id="player-form">
+                    <label for="player">Player</label>
+                    <input type="text" name="player" id="player">
+                    <label for="mark"></label>
+                    <div class="radio-group">
+                        <input type="radio" id="X" name="mark" value="X" checked>
+                        <label for="X">X</label>
+                        <input type="radio" id="O" name="mark" value="O">
+                        <label for="O">O</label>
+                    </div>
+                    <input type="submit" name="player-submit" id="player-submit">
+                </form>
+            </div>
+        </section>
         <section id="board-section">
             <div id="gameboard">
                 <div class="board-place" id="0"><span>X</span></div>
