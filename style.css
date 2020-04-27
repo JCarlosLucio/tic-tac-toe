@@ -33,13 +33,10 @@ header h1 {
 	border: 0.15em solid #2d0075;
 }
 
-.board-place span {
-	padding: 0.14em 0 0 0.14em;
-}
-
 .board-place {
-	width: 12rem;
-	height: 12rem;
+	padding: 0.14em 0 0 0.14em;
+	width: 11.5rem;
+	height: 11.5rem;
 	border: 5px solid #2d0075;
 	background-color: #1d004b;
 	font-size: 8rem;
@@ -112,8 +109,8 @@ header h1 {
 		height: 25vh;
 	}
 	.board-place {
-		width: 12rem;
-		height: 12rem;
+		width: 11.5rem;
+		height: 11.5rem;
 		font-size: 8rem;
 	}
 	main {
@@ -143,8 +140,8 @@ header h1 {
 		height: 25vh;
 	}
 	.board-place {
-		width: 5.5rem;
-		height: 5.5rem;
+		width: 5rem;
+		height: 5rem;
 		font-size: 4rem;
 	}
 	.score {
