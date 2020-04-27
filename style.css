@@ -16,6 +16,14 @@ header {
 	align-items: center;
 }
 
+main {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
 header h1 {
 	font-size: 4em;
 	color: #fff;
