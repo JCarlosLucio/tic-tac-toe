@@ -49,13 +49,11 @@ header h1 {
 .score {
 	margin: 0 1em;
 }
-
-#score-section {
-	color: white;
-	font-size: 1.5em;
-	text-align: center;
+.hide {
+	display: none;
+}
+.show {
 	display: flex;
-	flex-direction: column;
 }
 
 #player-submit,
@@ -70,6 +68,10 @@ header h1 {
 	border: none;
 	border-radius: 0.5em;
 	color: #fff;
+}
+
+#start-btn {
+	font-size: 3em;
 }
 
 #player-submit:hover,
@@ -97,15 +99,17 @@ header h1 {
 	align-content: center;
 }
 
-#state-section {
-	display: none;
-	position: absolute;
-}
 #score-section {
+	color: white;
+	font-size: 1.5em;
+	text-align: center;
 	flex-direction: row;
 }
+
+#state-section {
+	position: absolute;
+}
 #player-section {
-	display: flex;
 	position: absolute;
 }
 #board-section {
