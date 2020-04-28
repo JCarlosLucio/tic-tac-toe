@@ -58,7 +58,8 @@ header h1 {
 	flex-direction: column;
 }
 
-#player-submit {
+#player-submit,
+#start-btn {
 	width: 9em;
 	height: 3.5em;
 	font-family: 'Press Start 2P', cursive;
@@ -71,7 +72,8 @@ header h1 {
 	color: #fff;
 }
 
-#player-submit:hover {
+#player-submit:hover,
+#start-btn:hover {
 	background-position: right center;
 }
 
