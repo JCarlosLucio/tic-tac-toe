@@ -1,6 +1,15 @@
 const gameBoard = (() => {
 	// let board = [ 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O' ];
 	const board = [ '', '', '', '', '', '', '', '', '' ];
+	const start = () => {
+		const startBtn = document.getElementById('start-btn');
+		const stateSection = document.getElementById('state-section');
+		const playerSection = document.getElementById('player-section');
+		startBtn.addEventListener('click', (e) => {
+			hideToggle(stateSection);
+			hideToggle(playerSection);
+		});
+	};
 	const hideToggle = (element) => {
 		element.classList.toggle('hide');
 		element.classList.toggle('show');
