@@ -18,7 +18,7 @@ header {
 
 main {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
@@ -94,10 +94,17 @@ header h1 {
 	align-items: center;
 	align-content: center;
 }
-
+#score-section {
+	flex-direction: row;
+}
+#player-section {
+	display: flex;
+	position: absolute;
+}
 #board-section {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 }
 
 @media screen and (min-width: 30em) and (max-width: 60em) {
@@ -113,18 +120,18 @@ header h1 {
 		height: 11.5rem;
 		font-size: 8rem;
 	}
-	main {
+	/* main {
 		flex-direction: column;
-	}
+	} */
 	#score-section {
 		font-size: 1.5em;
-		flex-direction: row;
+		/* flex-direction: row;
 		order: 1;
-		-webkit-order: 1;
+		-webkit-order: 1; */
 	}
-	#board-section {
+	/* #board-section {
 		order: 2;
-	}
+	} */
 	#gameboard {
 		width: 40rem;
 		height: 40rem;
@@ -147,19 +154,19 @@ header h1 {
 	.score {
 		margin: 0 0.5em;
 	}
-	main {
+	/* main {
 		flex-direction: column;
-	}
+	} */
 	#score-section {
 		font-size: 1em;
-		flex-direction: row;
+		/* flex-direction: row;
 		order: 1;
-		-webkit-order: 1;
+		-webkit-order: 1; */
 	}
-	#board-section {
+	/* #board-section {
 		order: 2;
 		-webkit-order: 2;
-	}
+	} */
 	#gameboard {
 		width: 20rem;
 		height: 20rem;
