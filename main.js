@@ -1,6 +1,10 @@
 const gameBoard = (() => {
 	// let board = [ 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O' ];
 	const board = [ '', '', '', '', '', '', '', '', '' ];
+	const hideToggle = (element) => {
+		element.classList.toggle('hide');
+		element.classList.toggle('show');
+	};
 	const render = () => {
 		for (let i = 0; i < board.length; i++) {
 			document.getElementById(`${i}`).textContent = board[i];
@@ -33,7 +37,7 @@ const gameBoard = (() => {
 		}
 	};
 	const turn = '';
-	return { board, render, turn };
+	return { board, start, render, turn };
 })();
 
 const Player = (name = 'player1', mark = 'X') => {
@@ -54,4 +58,4 @@ const Player = (name = 'player1', mark = 'X') => {
 const playerOne = Player('John', 'X');
 const playerTwo = Player('Computer', 'O');
 
-gameBoard.render();
+gameBoard.start();
