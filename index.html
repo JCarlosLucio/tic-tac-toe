@@ -15,23 +15,33 @@
         <h1>TIC-TAC-TOE</h1>
     </header>
     <main>
-        <section id="player-section">
-            <div id="player-card">
-                <form id="player-form">
-                    <label for="player">Player</label>
-                    <input type="text" name="player" id="player">
-                    <label for="mark"></label>
-                    <div class="radio-group">
-                        <input type="radio" id="X" name="mark" value="X" checked>
-                        <label for="X">X</label>
-                        <input type="radio" id="O" name="mark" value="O">
-                        <label for="O">O</label>
-                    </div>
-                    <button type="submit" id="player-submit">READY!</button>
-                </form>
+        <section id="score-section">
+            <div class="score">
+                <h3>Player</h3>
+                <p id="player-score">0</p>
+            </div>
+            <div class="score">
+                <h3>Computer</h3>
+                <p id="computer-score">0</p>
             </div>
         </section>
         <section id="board-section">
+            <section id="player-section">
+                <div id="player-card">
+                    <form id="player-form">
+                        <label for="player">Player</label>
+                        <input type="text" name="player" id="player">
+                        <label for="mark"></label>
+                        <div class="radio-group">
+                            <input type="radio" id="X" name="mark" value="X" checked>
+                            <label for="X">X</label>
+                            <input type="radio" id="O" name="mark" value="O">
+                            <label for="O">O</label>
+                        </div>
+                        <button type="submit" id="player-submit">READY!</button>
+                    </form>
+                </div>
+            </section>
             <div id="gameboard">
                 <div class="board-place" id="0"></div>
                 <div class="board-place" id="1"></div>
@@ -44,16 +54,7 @@
                 <div class="board-place" id="8"></div>
             </div>
         </section>
-        <section id="score-section">
-            <div class="score">
-                <h3>Player</h3>
-                <p id="player-score">0</p>
-            </div>
-            <div class="score">
-                <h3>Computer</h3>
-                <p id="computer-score">0</p>
-            </div>
-        </section>
+
     </main>
     <script src="main.js"></script>
 </body>
