@@ -27,18 +27,24 @@
         </section>
         <section id="board-section">
             <section id="player-section" class="hide">
-                <div id="player-card">
-                    <form id="player-form">
-                        <label for="player">Player</label>
-                        <input type="text" name="player" id="player">
-                        <label for="mark"></label>
-                        <div class="radio-group">
+                <div class="card">
+                    <form id="player-form" class="form show">
+                        <label for="name">Player X</label>
+                        <input type="text" name="name" id="name" placeholder="Your Name">
+                        <div class="radio-group hide">
                             <input type="radio" id="X" name="mark" value="X" checked>
                             <label for="X">X</label>
                             <input type="radio" id="O" name="mark" value="O">
                             <label for="O">O</label>
                         </div>
                         <button type="submit" id="player-submit">READY!</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <form id="player-O-form" class="form hide">
+                        <label for="name-O">Player O</label>
+                        <input type="text" name="name-O" id="name-O" placeholder="Your Name">
+                        <button type="submit" id="player-O-submit">READY!</button>
                     </form>
                 </div>
             </section>
