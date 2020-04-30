@@ -22,6 +22,7 @@ main {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
+	margin: 2em 0;
 }
 
 header h1 {
@@ -109,6 +110,27 @@ input[type=text] {
 	align-items: center;
 }
 
+#outcome-display {
+	font-size: 3.5em;
+	width: 10em;
+	line-height: 1.5em;
+	background-image: linear-gradient(to right, #f9ee00, #ffcc00, #ffaa00, #f96000, #ffaa00, #ffcc00, #f9ee00);
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-size: 200%;
+	color: transparent;
+	-webkit-animation: gradient 2s linear infinite alternate;
+	animation: gradient 2s linear infinite alternate;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0%;
+	}
+	100% {
+		background-position: 100%;
+	}
+}
+
 #gameboard {
 	width: 40rem;
 	height: 40rem;
@@ -119,7 +141,8 @@ input[type=text] {
 	align-content: center;
 }
 
-#score-section {
+#score-section,
+#game-over-section {
 	color: white;
 	font-size: 1.5em;
 	text-align: center;
@@ -129,13 +152,18 @@ input[type=text] {
 #state-section {
 	position: absolute;
 }
-#player-section {
+#player-section,
+#game-over-section {
 	position: absolute;
 	width: 40rem;
 	height: 40rem;
 	justify-content: center;
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0.5);
+}
+#game-over-section {
+	background-color: rgba(0, 0, 0, 0.9);
+	border: 3px solid #f9ee00;
 }
 #board-section {
 	display: flex;
@@ -155,6 +183,10 @@ input[type=text] {
 		width: 11.5rem;
 		height: 11.5rem;
 		font-size: 8rem;
+	}
+	#outcome-display {
+		font-size: 2.5em;
+		width: 35rem;
 	}
 	#score-section {
 		font-size: 1.5em;
@@ -192,11 +224,19 @@ input[type=text] {
 	#start-btn {
 		font-size: 1.5em;
 	}
+	#player-turn {
+		font-size: 1.5em;
+	}
+	#outcome-display {
+		font-size: 1.5em;
+		width: 18rem;
+	}
 	#score-section {
 		font-size: 1em;
 	}
 	#gameboard,
-	#player-section {
+	#player-section,
+	#game-over-section {
 		width: 20rem;
 		height: 20rem;
 	}
