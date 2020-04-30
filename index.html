@@ -27,21 +27,21 @@
         </section>
         <section id="board-section">
             <section id="player-section" class="hide">
-                <form id="player-form" class="form show">
-                    <label for="name">Player X</label>
-                    <input type="text" name="name" id="name" placeholder="Enter Name">
-                    <div class="radio-group hide">
+                <form id="player-one-form" class="form show">
+                    <label for="name-one">Player X</label>
+                    <input type="text" name="name-one" id="name-one" placeholder="Enter Name">
+                    <div id="radio-group" class="hide">
                         <input type="radio" id="X" name="mark" value="X" checked>
                         <label for="X">X</label>
                         <input type="radio" id="O" name="mark" value="O">
                         <label for="O">O</label>
                     </div>
-                    <button type="submit" id="player-submit">READY!</button>
+                    <button type="submit" id="player-one-submit">READY!</button>
                 </form>
-                <form id="player-O-form" class="form hide">
-                    <label for="name-O">Player O</label>
-                    <input type="text" name="name-O" id="name-O" placeholder="Enter Name">
-                    <button type="submit" id="player-O-submit">READY!</button>
+                <form id="player-two-form" class="form hide">
+                    <label for="name-two">Player O</label>
+                    <input type="text" name="name-two" id="name-two" placeholder="Enter Name">
+                    <button type="submit" id="player-two-submit">READY!</button>
                 </form>
             </section>
             <section id="state-section" class="show">
