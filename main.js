@@ -1,15 +1,40 @@
 const gameBoard = (() => {
 	// let board = [ 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O' ];
+	let playerOne;
+	let playerTwo;
 	const board = [ '', '', '', '', '', '', '', '', '' ];
-	const start = () => {
+	const start = (() => {
 		const startBtn = document.getElementById('start-btn');
 		const stateSection = document.getElementById('state-section');
 		const playerSection = document.getElementById('player-section');
+		const playerOneForm = document.getElementById('player-one-form');
+		const playerTwoForm = document.getElementById('player-two-form');
+		const scoreSection = document.getElementById('score-section');
 		startBtn.addEventListener('click', (e) => {
 			hideToggle(stateSection);
 			hideToggle(playerSection);
 		});
-	};
+		playerOneForm.addEventListener('submit', (e) => {
+			const playerOneName = document.getElementById('name-one').value;
+			const playerOneMark = playerOneForm.elements['mark'].value;
+			playerOne = Player(playerOneName, playerOneMark);
+			e.preventDefault();
+			hideToggle(playerOneForm);
+			hideToggle(playerTwoForm);
+			return playerOne;
+		});
+		playerTwoForm.addEventListener('submit', (e) => {
+			const playerTwoName = document.getElementById('name-two').value;
+			const playerTwoMark = playerOne.mark === 'X' ? 'O' : 'X';
+			playerTwo = Player(playerTwoName, playerTwoMark);
+			e.preventDefault();
+			hideToggle(playerTwoForm);
+			hideToggle(playerSection);
+			hideToggle(scoreSection);
+			render();
+			return playerTwo;
+		});
+	})();
 	const hideToggle = (element) => {
 		element.classList.toggle('hide');
 		element.classList.toggle('show');
@@ -64,7 +89,7 @@ const Player = (name = 'player1', mark = 'X') => {
 	return { name, mark, chosenMsg, placeMark };
 };
 
-const playerOne = Player('John', 'X');
-const playerTwo = Player('Computer', 'O');
+// const playerOne = Player('John', 'X');
+// const playerTwo = Player('Computer', 'O');
 
-gameBoard.start();
+// gameBoard.start();
