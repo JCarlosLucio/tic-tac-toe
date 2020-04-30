@@ -52,6 +52,10 @@ const gameBoard = (() => {
 		playerTwoScoreName.textContent = `${playerTwo.name}(${playerTwo.mark})`;
 		playerTwoScore.textContent = `${playerTwoScoreCount}`;
 	};
+	const fillPlayerTurn = (playerName) => {
+		const playerTurn = document.getElementById('player-turn');
+		playerTurn.textContent = `"${playerName.name} TURN"`;
+	};
 	const render = () => {
 		for (let i = 0; i < board.length; i++) {
 			document.getElementById(`${i}`).textContent = board[i];
@@ -88,6 +92,7 @@ const gameBoard = (() => {
 				break;
 			default:
 				console.log(`${gameBoard.turn != playerOne.mark ? playerOne.name : playerTwo.name} TURN`);
+				gameBoard.turn != playerOne.mark ? fillPlayerTurn(playerOne) : fillPlayerTurn(playerTwo);
 				break;
 		}
 	};
