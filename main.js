@@ -67,6 +67,12 @@ const gameBoard = (() => {
 		// Check if win / tie
 		gameOver(board);
 	};
+	const displayOutcome = (playerName = '', outcome = 'TIE') => {
+		const gameOverSection = document.getElementById('game-over-section');
+		const outcomeDisplay = document.getElementById('outcome-display');
+		outcomeDisplay.textContent = `${playerName} ${outcome}`;
+		hideToggle(gameOverSection);
+	};
 	const gameOver = (board) => {
 		switch (true) {
 			case board[0] === board[1] && board[1] === board[2] && board[0] != '':
@@ -80,14 +86,17 @@ const gameBoard = (() => {
 				if (gameBoard.turn === playerOne.mark) {
 					console.log(`${playerOne.name} WON`);
 					playerOneScoreCount++;
+					displayOutcome(playerOne.name, 'WON');
 					fillScoreSection();
 				} else {
 					console.log(`${playerTwo.name} WON`);
+					displayOutcome(playerTwo.name, 'WON');
 					playerTwoScoreCount++;
 					fillScoreSection();
 				}
 				break;
 			case !board.includes(''):
+				displayOutcome();
 				console.log('TIE');
 				break;
 			default:
