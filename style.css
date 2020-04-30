@@ -49,6 +49,16 @@ header h1 {
 .score {
 	margin: 0 1em;
 }
+.score-container,
+.turn-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+.turn-container {
+	font-size: 0.5em;
+}
 .hide {
 	display: none;
 }
@@ -113,7 +123,7 @@ input[type=text] {
 	color: white;
 	font-size: 1.5em;
 	text-align: center;
-	flex-direction: row;
+	flex-direction: column;
 }
 
 #state-section {
