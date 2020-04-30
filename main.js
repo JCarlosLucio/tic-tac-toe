@@ -2,6 +2,8 @@ const gameBoard = (() => {
 	// let board = [ 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O' ];
 	let playerOne;
 	let playerTwo;
+	let playerOneScoreCount = 0;
+	let playerTwoScoreCount = 0;
 	const board = [ '', '', '', '', '', '', '', '', '' ];
 	const start = (() => {
 		const startBtn = document.getElementById('start-btn');
@@ -30,6 +32,7 @@ const gameBoard = (() => {
 			e.preventDefault();
 			hideToggle(playerTwoForm);
 			hideToggle(playerSection);
+			fillScoreSection();
 			hideToggle(scoreSection);
 			render();
 			return playerTwo;
@@ -38,6 +41,16 @@ const gameBoard = (() => {
 	const hideToggle = (element) => {
 		element.classList.toggle('hide');
 		element.classList.toggle('show');
+	};
+	const fillScoreSection = () => {
+		const playerOneScoreName = document.getElementById('player-one-score-name');
+		const playerTwoScoreName = document.getElementById('player-two-score-name');
+		const playerOneScore = document.getElementById('player-one-score');
+		const playerTwoScore = document.getElementById('player-two-score');
+		playerOneScoreName.textContent = `${playerOne.name}(${playerOne.mark})`;
+		playerOneScore.textContent = `${playerOneScoreCount}`;
+		playerTwoScoreName.textContent = `${playerTwo.name}(${playerTwo.mark})`;
+		playerTwoScore.textContent = `${playerTwoScoreCount}`;
 	};
 	const render = () => {
 		for (let i = 0; i < board.length; i++) {
@@ -61,13 +74,22 @@ const gameBoard = (() => {
 			case board[2] === board[5] && board[5] === board[8] && board[2] != '':
 			case board[3] === board[4] && board[4] === board[5] && board[3] != '':
 			case board[6] === board[7] && board[7] === board[8] && board[6] != '':
-				console.log(`${gameBoard.turn === playerOne.mark ? playerOne.name : playerTwo.name} WON`);
+				if (gameBoard.turn === playerOne.mark) {
+					console.log(`${playerOne.name} WON`);
+					playerOneScoreCount++;
+					fillScoreSection();
+				} else {
+					console.log(`${playerTwo.name} WON`);
+					playerTwoScoreCount++;
+					fillScoreSection();
+				}
 				break;
 			case !board.includes(''):
 				console.log('TIE');
 				break;
 			default:
-				console.log('WE ARE NOT DONE YET');
+				console.log(`${gameBoard.turn != playerOne.mark ? playerOne.name : playerTwo.name} TURN`);
+				break;
 		}
 	};
 	const turn = '';
