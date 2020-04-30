@@ -4,7 +4,7 @@ const gameBoard = (() => {
 	let playerTwo;
 	let playerOneScoreCount = 0;
 	let playerTwoScoreCount = 0;
-	const board = [ '', '', '', '', '', '', '', '', '' ];
+	let board = [ '', '', '', '', '', '', '', '', '' ];
 	const start = (() => {
 		const startBtn = document.getElementById('start-btn');
 		const stateSection = document.getElementById('state-section');
@@ -12,6 +12,7 @@ const gameBoard = (() => {
 		const playerOneForm = document.getElementById('player-one-form');
 		const playerTwoForm = document.getElementById('player-two-form');
 		const scoreSection = document.getElementById('score-section');
+		const playAgainBtn = document.getElementById('play-again');
 		startBtn.addEventListener('click', (e) => {
 			hideToggle(stateSection);
 			hideToggle(playerSection);
@@ -36,6 +37,14 @@ const gameBoard = (() => {
 			hideToggle(scoreSection);
 			render();
 			return playerTwo;
+		});
+		playAgainBtn.addEventListener('click', (e) => {
+			const gameOverSection = document.getElementById('game-over-section');
+			for (let i = 0; i < board.length; i++) {
+				board[i] = '';
+			}
+			hideToggle(gameOverSection);
+			render();
 		});
 	})();
 	const hideToggle = (element) => {
