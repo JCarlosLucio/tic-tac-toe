@@ -20,7 +20,7 @@ const gameBoard = (() => {
 		playerOneForm.addEventListener('submit', (e) => {
 			const playerOneName = document.getElementById('name-one').value;
 			const playerOneMark = playerOneForm.elements['mark'].value;
-			playerOne = Player(playerOneName, playerOneMark);
+			playerOne = Player(playerOneName || 'Player 1', playerOneMark);
 			e.preventDefault();
 			hideToggle(playerOneForm);
 			hideToggle(playerTwoForm);
@@ -29,7 +29,7 @@ const gameBoard = (() => {
 		playerTwoForm.addEventListener('submit', (e) => {
 			const playerTwoName = document.getElementById('name-two').value;
 			const playerTwoMark = playerOne.mark === 'X' ? 'O' : 'X';
-			playerTwo = Player(playerTwoName, playerTwoMark);
+			playerTwo = Player(playerTwoName || 'Player 2', playerTwoMark);
 			e.preventDefault();
 			hideToggle(playerTwoForm);
 			hideToggle(playerSection);
@@ -56,9 +56,9 @@ const gameBoard = (() => {
 		const playerTwoScoreName = document.getElementById('player-two-score-name');
 		const playerOneScore = document.getElementById('player-one-score');
 		const playerTwoScore = document.getElementById('player-two-score');
-		playerOneScoreName.textContent = `${playerOne.name}(${playerOne.mark})`;
+		playerOneScoreName.textContent = `${playerOne.name} (${playerOne.mark})`;
 		playerOneScore.textContent = `${playerOneScoreCount}`;
-		playerTwoScoreName.textContent = `${playerTwo.name}(${playerTwo.mark})`;
+		playerTwoScoreName.textContent = `${playerTwo.name} (${playerTwo.mark})`;
 		playerTwoScore.textContent = `${playerTwoScoreCount}`;
 	};
 	const fillPlayerTurn = (playerName) => {
@@ -117,7 +117,7 @@ const gameBoard = (() => {
 	return { board, render, turn };
 })();
 
-const Player = (name = 'player1', mark = 'X') => {
+const Player = (name, mark) => {
 	const placeMark = (boardPlace) => {
 		if (!gameBoard.board[Number(boardPlace.id)] && gameBoard.turn != mark) {
 			gameBoard.board[Number(boardPlace.id)] = mark;
