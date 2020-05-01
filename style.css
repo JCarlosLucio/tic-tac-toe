@@ -112,7 +112,7 @@ input[type=text] {
 
 #outcome-display {
 	font-size: 3.5em;
-	width: 10em;
+	width: 35rem;
 	line-height: 1.5em;
 	background-image: linear-gradient(to right, #f9ee00, #ffcc00, #ffaa00, #f96000, #ffaa00, #ffcc00, #f9ee00);
 	-webkit-background-clip: text;
@@ -184,6 +184,10 @@ input[type=text] {
 		height: 11.5rem;
 		font-size: 8rem;
 	}
+	.score h3 {
+		width: 18rem;
+		overflow: hidden;
+	}
 	#outcome-display {
 		font-size: 2.5em;
 		width: 35rem;
@@ -215,6 +219,10 @@ input[type=text] {
 	}
 	.score {
 		margin: 0 0.5em;
+	}
+	.score h3 {
+		width: 10rem;
+		overflow: hidden;
 	}
 	.form {
 		font-size: 1.5em;
