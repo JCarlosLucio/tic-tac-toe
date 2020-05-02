@@ -1,4 +1,5 @@
 const gameBoard = (() => {
+	let state = '';
 	const turn = '';
 	let playerOne;
 	let playerTwo;
@@ -6,38 +7,53 @@ const gameBoard = (() => {
 	let playerTwoScoreCount = 0;
 	let board = [ '', '', '', '', '', '', '', '', '' ];
 	const start = (() => {
-		const startBtn = document.getElementById('start-btn');
+		const pvpBtn = document.getElementById('pvp-btn');
+		const pvcBtn = document.getElementById('pvc-btn');
 		const stateSection = document.getElementById('state-section');
 		const playerSection = document.getElementById('player-section');
 		const playerOneForm = document.getElementById('player-one-form');
 		const playerTwoForm = document.getElementById('player-two-form');
 		const scoreSection = document.getElementById('score-section');
 		const playAgainBtn = document.getElementById('play-again');
-		startBtn.addEventListener('click', (e) => {
+		pvpBtn.addEventListener('click', (e) => {
+			state = 'pvp';
 			hideToggle(stateSection);
 			hideToggle(playerSection);
+			playerOneFormListener(state);
+			playerTwoFormListener(state);
 		});
-		playerOneForm.addEventListener('submit', (e) => {
-			const playerOneName = document.getElementById('name-one').value;
-			const playerOneMark = playerOneForm.elements['mark'].value;
-			playerOne = Player(playerOneName || 'Player 1', playerOneMark);
-			e.preventDefault();
-			hideToggle(playerOneForm);
-			hideToggle(playerTwoForm);
-			return playerOne;
-		});
-		playerTwoForm.addEventListener('submit', (e) => {
-			const playerTwoName = document.getElementById('name-two').value;
-			const playerTwoMark = playerOne.mark === 'X' ? 'O' : 'X';
-			playerTwo = Player(playerTwoName || 'Player 2', playerTwoMark);
-			e.preventDefault();
-			hideToggle(playerTwoForm);
+		pvcBtn.addEventListener('click', (e) => {
+			state = 'pvc';
+			hideToggle(stateSection);
 			hideToggle(playerSection);
-			fillScoreSection();
-			hideToggle(scoreSection);
-			render();
-			return playerTwo;
+			playerOneFormListener(state);
+			playerTwoFormListener(state);
 		});
+		const playerOneFormListener = (state) => {
+			console.log(state);
+			playerOneForm.addEventListener('submit', (e) => {
+				const playerOneName = document.getElementById('name-one').value;
+				const playerOneMark = playerOneForm.elements['mark'].value;
+				playerOne = Player(playerOneName || 'Player 1', playerOneMark);
+				e.preventDefault();
+				hideToggle(playerOneForm);
+				hideToggle(playerTwoForm);
+			});
+		};
+		const playerTwoFormListener = (state) => {
+			console.log(state);
+			playerTwoForm.addEventListener('submit', (e) => {
+				const playerTwoName = document.getElementById('name-two').value;
+				const playerTwoMark = playerOne.mark === 'X' ? 'O' : 'X';
+				playerTwo = Player(playerTwoName || 'Player 2', playerTwoMark);
+				e.preventDefault();
+				hideToggle(playerTwoForm);
+				hideToggle(playerSection);
+				fillScoreSection();
+				hideToggle(scoreSection);
+				render();
+			});
+		};
 		playAgainBtn.addEventListener('click', (e) => {
 			const gameOverSection = document.getElementById('game-over-section');
 			for (let i = 0; i < board.length; i++) {
