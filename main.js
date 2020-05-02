@@ -27,7 +27,6 @@ const gameBoard = (() => {
 			hideToggle(stateSection);
 			hideToggle(playerSection);
 			playerOneFormListener(state);
-			playerTwoFormListener(state);
 		});
 		const playerOneFormListener = (state) => {
 			console.log(state);
@@ -37,7 +36,11 @@ const gameBoard = (() => {
 				playerOne = Player(playerOneName || 'Player 1', playerOneMark);
 				e.preventDefault();
 				hideToggle(playerOneForm);
-				hideToggle(playerTwoForm);
+				if (state === 'pvp') {
+					hideToggle(playerTwoForm);
+				} else {
+					createComputer();
+				}
 			});
 		};
 		const playerTwoFormListener = (state) => {
@@ -53,6 +56,15 @@ const gameBoard = (() => {
 				hideToggle(scoreSection);
 				render();
 			});
+		};
+		const createComputer = () => {
+			console.log(state);
+			const computerMark = playerOne.mark === 'X' ? 'O' : 'X';
+			playerTwo = Player('Computer', computerMark);
+			hideToggle(playerSection);
+			fillScoreSection();
+			hideToggle(scoreSection);
+			render();
 		};
 		playAgainBtn.addEventListener('click', (e) => {
 			const gameOverSection = document.getElementById('game-over-section');
