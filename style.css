@@ -85,8 +85,11 @@ button:hover {
 	background-position: right center;
 }
 
-#start-btn {
-	font-size: 3em;
+.state-btn {
+	height: 5em;
+	font-size: 2em;
+	padding: 0.2em;
+	margin: 1em;
 }
 
 input[type=text] {
@@ -151,6 +154,7 @@ input[type=text] {
 
 #state-section {
 	position: absolute;
+	flex-direction: column;
 }
 #player-section,
 #game-over-section {
@@ -229,8 +233,8 @@ input[type=text] {
 		height: 10em;
 		padding-top: 1.2em;
 	}
-	#start-btn {
-		font-size: 1.5em;
+	.state-btn {
+		font-size: 1em;
 	}
 	#player-turn {
 		font-size: 1.5em;
