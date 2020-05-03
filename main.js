@@ -1,5 +1,6 @@
 const gameBoard = (() => {
 	let state = '';
+	let notFinished = true;
 	const turn = '';
 	let playerOne;
 	let playerTwo;
@@ -60,7 +61,7 @@ const gameBoard = (() => {
 		const createComputer = () => {
 			console.log(state);
 			const computerMark = playerOne.mark === 'X' ? 'O' : 'X';
-			playerTwo = Player('Computer', computerMark);
+			playerTwo = Player('CPU', computerMark);
 			hideToggle(playerSection);
 			fillScoreSection();
 			hideToggle(scoreSection);
@@ -71,8 +72,13 @@ const gameBoard = (() => {
 			for (let i = 0; i < board.length; i++) {
 				board[i] = '';
 			}
+			notFinished = true;
 			hideToggle(gameOverSection);
 			render();
+			// If game is  PvC lets the computer place their mark first if its their turn after a match
+			if (gameBoard.turn === playerOne.mark && state === 'pvc') {
+				setTimeout(computerPlaceMark, 500);
+			}
 		});
 	})();
 	const hideToggle = (element) => {
@@ -97,12 +103,23 @@ const gameBoard = (() => {
 		for (let i = 0; i < board.length; i++) {
 			document.getElementById(`${i}`).textContent = board[i];
 			document.getElementById(`${i}`).addEventListener('click', (e) => {
-				playerOne.placeMark(e.target);
-				playerTwo.placeMark(e.target);
+				playerOne.placeMark(e.target.id);
+				// Checks if its pvp or pvc to let the computer play or the other player
+				if (state != 'pvc') {
+					playerTwo.placeMark(e.target.id);
+				} else {
+					if (notFinished) {
+						setTimeout(computerPlaceMark, 500);
+					}
+				}
 			});
 		}
 		// Check if win / tie
 		gameOver(board);
+	};
+	// Makes the computer place a mark randomly
+	const computerPlaceMark = () => {
+		playerTwo.placeMark(Math.floor(Math.random() * 9));
 	};
 	const displayOutcome = (playerName = '', outcome = 'TIE') => {
 		const gameOverSection = document.getElementById('game-over-section');
@@ -124,16 +141,19 @@ const gameBoard = (() => {
 					console.log(`${playerOne.name} WON`);
 					playerOneScoreCount++;
 					displayOutcome(playerOne.name, 'WON');
+					notFinished = false;
 					fillScoreSection();
 				} else {
 					console.log(`${playerTwo.name} WON`);
 					displayOutcome(playerTwo.name, 'WON');
+					notFinished = false;
 					playerTwoScoreCount++;
 					fillScoreSection();
 				}
 				break;
 			case !board.includes(''):
 				displayOutcome();
+				notFinished = false;
 				console.log('TIE');
 				break;
 			default:
@@ -146,9 +166,9 @@ const gameBoard = (() => {
 })();
 
 const Player = (name, mark) => {
-	const placeMark = (boardPlace) => {
-		if (!gameBoard.board[Number(boardPlace.id)] && gameBoard.turn != mark) {
-			gameBoard.board[Number(boardPlace.id)] = mark;
+	const placeMark = (boardPlaceId) => {
+		if (!gameBoard.board[Number(boardPlaceId)] && gameBoard.turn != mark) {
+			gameBoard.board[Number(boardPlaceId)] = mark;
 			gameBoard.turn = mark;
 			gameBoard.render();
 		}
