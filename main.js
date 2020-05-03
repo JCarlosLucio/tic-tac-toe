@@ -105,7 +105,7 @@ const gameBoard = (() => {
 			document.getElementById(`${i}`).addEventListener('click', (e) => {
 				playerOne.placeMark(e.target.id);
 				// Checks if its pvp or pvc to let the computer play or the other player
-				if (state != 'pvc') {
+				if (state !== 'pvc') {
 					playerTwo.placeMark(e.target.id);
 				} else {
 					if (notFinished) {
@@ -129,14 +129,14 @@ const gameBoard = (() => {
 	};
 	const gameOver = (board) => {
 		switch (true) {
-			case board[0] === board[1] && board[1] === board[2] && board[0] != '':
-			case board[0] === board[3] && board[3] === board[6] && board[0] != '':
-			case board[0] === board[4] && board[4] === board[8] && board[0] != '':
-			case board[1] === board[4] && board[4] === board[7] && board[1] != '':
-			case board[2] === board[4] && board[4] === board[6] && board[2] != '':
-			case board[2] === board[5] && board[5] === board[8] && board[2] != '':
-			case board[3] === board[4] && board[4] === board[5] && board[3] != '':
-			case board[6] === board[7] && board[7] === board[8] && board[6] != '':
+			case board[0] === board[1] && board[1] === board[2] && board[0] !== '':
+			case board[0] === board[3] && board[3] === board[6] && board[0] !== '':
+			case board[0] === board[4] && board[4] === board[8] && board[0] !== '':
+			case board[1] === board[4] && board[4] === board[7] && board[1] !== '':
+			case board[2] === board[4] && board[4] === board[6] && board[2] !== '':
+			case board[2] === board[5] && board[5] === board[8] && board[2] !== '':
+			case board[3] === board[4] && board[4] === board[5] && board[3] !== '':
+			case board[6] === board[7] && board[7] === board[8] && board[6] !== '':
 				if (gameBoard.turn === playerOne.mark) {
 					console.log(`${playerOne.name} WON`);
 					playerOneScoreCount++;
@@ -157,8 +157,8 @@ const gameBoard = (() => {
 				console.log('TIE');
 				break;
 			default:
-				console.log(`${gameBoard.turn != playerOne.mark ? playerOne.name : playerTwo.name} TURN`);
-				gameBoard.turn != playerOne.mark ? fillPlayerTurn(playerOne) : fillPlayerTurn(playerTwo);
+				console.log(`${gameBoard.turn !== playerOne.mark ? playerOne.name : playerTwo.name} TURN`);
+				gameBoard.turn !== playerOne.mark ? fillPlayerTurn(playerOne) : fillPlayerTurn(playerTwo);
 				break;
 		}
 	};
@@ -167,7 +167,7 @@ const gameBoard = (() => {
 
 const Player = (name, mark) => {
 	const placeMark = (boardPlaceId) => {
-		if (!gameBoard.board[Number(boardPlaceId)] && gameBoard.turn != mark) {
+		if (!gameBoard.board[Number(boardPlaceId)] && gameBoard.turn !== mark) {
 			gameBoard.board[Number(boardPlaceId)] = mark;
 			gameBoard.turn = mark;
 			gameBoard.render();
